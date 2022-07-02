@@ -1,0 +1,105 @@
+/* general */
+
+body {
+  border: solid 1px #ced4da;
+  border-radius: 10px;
+  min-width: 750px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.container {
+  border: solid 1px#198754;
+  border-radius: 10px;
+}
+
+/* navigation panel */
+
+nav {
+  margin-top: 10px;
+  font-family: "Space Mono", monospace;
+}
+
+.current-btn {
+  border: 1px solid green;
+  color: green;
+  margin-left: 40px;
+}
+.search-container {
+  padding-top: 10px;
+}
+
+.last-radio-button {
+  padding-right: 30px;
+}
+
+.last-radio-button,
+.first-radio-button {
+  font-size: 10px;
+}
+
+/* sections */
+
+section {
+  border: solid 1px#ced4da;
+  border-radius: 10px;
+  padding: 10px 30px;
+  margin: 10px;
+  justify-content: center;
+}
+
+section:hover {
+  background-color: rgba(25, 135, 84, 0.07);
+  padding: 25px 45px;
+  cursor: pointer;
+  transition: cubic-bezier(0.39, 0.575, 0.565, 1);
+  border: #198754 1px solid;
+}
+
+h1,
+h2,
+p {
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+  color: #526069;
+}
+
+p {
+  font-size: 20px;
+  font-family: "Space Mono", monospace;
+  margin: 0;
+}
+
+img {
+  display: block;
+  padding: 20px;
+  height: 90px;
+  margin: 0 auto;
+}
+
+.city-name {
+  font-size: 50px;
+  padding-top: 40px;
+}
+
+.weather-block-title {
+  padding-top: 15px;
+  font-size: 40px;
+}
+/* footer  */
+
+footer p {
+  font-size: 10px;
+}
+
+footer p a {
+  text-decoration: none;
+  color: black;
+}
+
+footer p a:hover {
+  color: #198754;
+  font-size: 12px;
+  cursor: pointer;
+}
