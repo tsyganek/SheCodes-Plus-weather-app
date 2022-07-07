@@ -60,6 +60,35 @@ function getCurrentDate() {
 
 getCurrentDate();
 
+// CURRENT BUTTON
+
+function showCurrentCityWeather(response) {
+  let currentTempElement = document.getElementById("temp-now");
+  let temperature = Math.round(response.data.main.temp);
+  currentTempElement.innerHTML = `${temperature}°C`;
+}
+
+function showCityData(response) {
+  let currentCity = response.data[0].name;
+  document.querySelector("#city-name").innerHTML = currentCity;
+  let url2 = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&units=metric&appid=${apiKey}`;
+  axios.get(url2).then(showCurrentCityWeather);
+}
+
+function retrievePosition(position) {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let url1 = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=5&appid=${apiKey}`;
+  axios.get(url1).then(showCityData);
+}
+
+let currentBtn = document.getElementById("currentbtn");
+// currentBtn.onclick = function onclick() {
+//   navigator.geolocation.getCurrentPosition(retrievePosition);
+// };
+
+currentBtn.addEventListener('click', navigator.geolocation.getCurrentPosition(retrievePosition))
+
 //CITY
 
 let apiKey = "294a89684f421e2c70cadf6f7a72b25c";
@@ -108,32 +137,4 @@ function handleChange(target) {
 }
 let radios = document.getElementsByName("flexRadioDefault");
 handleChange(radios);
-
-// CURRENT BUTTON
-
-function retrievePosition(position) {
-  let lat = position.coords.latitude;
-  let lon = position.coords.longitude;
-  let url1 = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=5&appid=${apiKey}`;
-
-  function showCityWeather(response) {
-    let currentTempElement = document.getElementById("temp-now");
-    let temperature = Math.round(response.data.main.temp);
-    currentTempElement.innerHTML = `${temperature}°C`;
-  }
-
-  function showCityData(response) {
-    let currentCity = response.data[0].name;
-    document.querySelector("#city-name").innerHTML = currentCity;
-    let url2 = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&units=metric&appid=${apiKey}`;
-    axios.get(url2).then(showCityWeather);
-  }
-
-  axios.get(url1).then(showCityData);
-}
-
-let currentBtn = document.getElementById("currentbtn");
-currentBtn.onclick = function onclick() {
-  navigator.geolocation.getCurrentPosition(retrievePosition);
-};
 
