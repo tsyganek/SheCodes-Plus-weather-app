@@ -25,69 +25,91 @@
     />
 
     <!--weather API-->
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
 
   <body>
     <div class="container">
-
       <!-- Navigation -->
-      <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid search-container">
-          <form class="d-flex" role="search" id ="city-form">
-            <input
-              class="form-control me-2"
-              type="search"
-              id="city-input"
-              placeholder="your city"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-success button" type="submit">
-              Search
-            </button>
-<button class= "btn btn-outline-success button" type="button" id = "currentbtn">
-              Current
-            </button>
-          </form>
+      <header>
+        <nav class="navbar navbar-expand-lg">
+          <div class="container-fluid search-container">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <!-- logo -->
+              <li class="nav-item">
+                <span>weather mommy</span>
+              </li>
 
-          
+              <!-- search form -->
+              <li class="nav-item">
+                <form class="d-flex" role="search" id="city-form">
+                  <input
+                    class="form-control me-2"
+                    type="search"
+                    id="city-input"
+                    placeholder="your city"
+                    aria-label="Search"
+                  />
 
-          <!-- Temperature Radio Buttons -->
-          <div class = 'radiobtns'>
-          <div class="form-check first-radio-button">
-            <input
-              class="form-check-input radio-button"
-              type="radio"
-              name="flexRadioDefault"
-              id="flexRadioDefault1"
-              checked
-        onchange="handleChange(this)"
-            />
-            <label class="form-check-label" for="flexRadioDefault1"> C </label>
+                  <button class="btn button btn-success" type="submit">
+                    Search
+                  </button>
+                </form>
+              </li>
+
+              <!-- Temperature Radio Buttons -->
+              <li class="nav-item">
+                <div class="radiobtns">
+                  <div class="form-check first-radio-button">
+                    <input
+                      class="form-check-input radio-button"
+                      type="radio"
+                      name="flexRadioDefault"
+                      id="flexRadioDefault1"
+                      checked
+                      onchange="handleChange(this)"
+                    />
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      C
+                    </label>
+                  </div>
+                  <div class="form-check last-radio-button">
+                    <input
+                      class="form-check-input radio-button"
+                      type="radio"
+                      name="flexRadioDefault"
+                      id="flexRadioDefault2"
+                      onchange="handleChange(this)"
+                    />
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      F
+                    </label>
+                  </div>
+                </div>
+              </li>
+              <!-- Current Button -->
+              <li class="nav-item">
+                <button
+                  class="btn button btn-success"
+                  type="button"
+                  id="currentbtn"
+                >
+                  Current
+                </button>
+              </li>
+            </ul>
           </div>
-          <div class="form-check last-radio-button">
-            <input
-              class="form-check-input radio-button"
-              type="radio"
-              name="flexRadioDefault"
-              id="flexRadioDefault2"
-               onchange="handleChange(this)"
-            
-            />
-            <label class="form-check-label" for="flexRadioDefault2"> F </label>
-          </div>
-        </div>
-        </div>
-      </nav>
-
+        </nav>
+      </header>
       <!-- Hero -->
       <section class="hero weather-block">
-        <h1 class="city-name" id ='city-name'>let's go somewhere</h1>
+        <h1 class="city-name" id="city-name">Choose your city</h1>
       </section>
 
       <!-- Current Weather -->
       <section class="weather-block now">
-        <h2 class="weather-block-title" id='current'>Current</h2>
+        <h2 class="weather-block-title" id="current">Current</h2>
         <div class="row now-grid">
           <div class="col">
             <img
@@ -96,16 +118,19 @@
               alt="rainy"
             />
           </div>
-          <div class="col"><p class="now-temperature">Rainy</p></div>
+          <div class="col">
+            <p class="now-temperature">Rainy</p>
+          </div>
           <div class="col">
             <p class="min-max">current</p>
-            <p class="now-temperature temp" id = 'temp-now'>18°C</p>
+            <p class="now-temperature temp" id="temp-now"></p>
+          </div>
         </div>
       </section>
 
       <!-- Today Weather -->
       <section class="weather-block today">
-        <h2 class="weather-block-title" id = "today-date">Today</h2>
+        <h2 class="weather-block-title" id="today-date">Today</h2>
         <div class="row">
           <div class="col">
             <img
@@ -115,12 +140,12 @@
             />
           </div>
           <div class="col">
-            <p class = 'min-max'>min</p>
-            <p class = 'temp'>18°C</p>
+            <p class="min-max">min</p>
+            <p class="temp">18°C</p>
           </div>
           <div class="col">
-            <p class ="min-max">max</p>
-            <p class ="temp">19°C</p>
+            <p class="min-max">max</p>
+            <p class="temp">19°C</p>
           </div>
         </div>
       </section>
@@ -130,86 +155,86 @@
         <h2 class="weather-block-title">Later</h2>
         <div class="row">
           <div class="col">
-
-            <p  class = 'later'>Mon</p>
+            <p class="later">Mon</p>
           </div>
           <div class="col">
             <img src="images/sun.svg" alt="sunny" />
           </div>
           <div class="col">
-            <p class = "min-max">min</p>
-            <p class= "temp">25°C</p>
+            <p class="min-max">min</p>
+            <p class="temp">25°C</p>
           </div>
           <div class="col">
-            <p class = "min-max">max</p>
-            <p class = "temp">29°C</p>
+            <p class="min-max">max</p>
+            <p class="temp">29°C</p>
           </div>
         </div>
-        <hr>
+        <hr />
 
         <div class="row">
           <div class="col">
-            <p class = 'later'>Tue</p>
+            <p class="later">Tue</p>
           </div>
           <div class="col">
             <img src="images/rain-sun.svg" alt="sometimes rain" />
           </div>
           <div class="col">
-            <p class ="min-max">min</p>
-            <p class = "temp">22°C</p>
+            <p class="min-max">min</p>
+            <p class="temp">22°C</p>
           </div>
           <div class="col">
             <p class="min-max">max</p>
-            <p class = "temp">29°C</p>
+            <p class="temp">29°C</p>
           </div>
         </div>
-        <hr>
+        <hr />
         <div class="row">
           <div class="col">
-            <p class = 'later'>Wed</p>
+            <p class="later">Wed</p>
           </div>
           <div class="col">
             <img src="images/thunder-storm.svg" alt="thunder storm" />
           </div>
           <div class="col">
-            <p class = "min-max">min</p>
-            <p class = "temp">28°C</p>
+            <p class="min-max">min</p>
+            <p class="temp">28°C</p>
           </div>
           <div class="col">
             <p class="min-max">max</p>
-            <p class = "temp">34°C</p>
+            <p class="temp">34°C</p>
           </div>
         </div>
-        <hr>
+        <hr />
         <div class="row">
-          <div class="col"><p class = 'later'>Thu</p></div>
+          <div class="col"><p class="later">Thu</p></div>
           <div class="col">
             <img src="images/cloudy.svg" alt="cloudy" />
           </div>
           <div class="col">
-            <p class = 'min-max'>min</p>
-            <p class = 'temp'>25°C</p>
+            <p class="min-max">min</p>
+            <p class="temp">25°C</p>
           </div>
           <div class="col">
             <p class="min-max">max</p>
-            <p class = "temp">30°C</p>
+            <p class="temp">30°C</p>
           </div>
         </div>
-        <hr>
+        <hr />
         <div class="row">
           <div class="col">
-            <p class = 'later'>Fri</p>
+            <p class="later">Fri</p>
           </div>
           <div class="col">
             <img src="images/comet.svg" alt="comet" />
           </div>
           <div class="col">
-            <p class = "min-max">min</p>
-            <p class = "temp">22°C</p>
+            <p class="min-max">min</p>
+            <p class="temp">22°C</p>
           </div>
           <div class="col">
-            <p class = "min-max">max</p>
-            <p class = "temp">29°C</p></div>
+            <p class="min-max">max</p>
+            <p class="temp">29°C</p>
+          </div>
         </div>
       </section>
 
@@ -226,3 +251,4 @@
     <script src="src/index2.js"></script>
   </body>
 </html>
+
